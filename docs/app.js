@@ -155,6 +155,8 @@ function buildSectionMenu() {
 
   activeTopId = activeTopId || (groups[0] ? groups[0].id : null);
 
+  const hasSubsections = groups.some((g) => g.children && g.children.length);
+
   sectionMenu.innerHTML = `
     <div class="section-menu-header">
       <p class="eyebrow">Sections</p>
@@ -171,13 +173,14 @@ function buildSectionMenu() {
         )
         .join("")}
     </div>
-    <div class="items level3" id="section-submenu"></div>
+    ${hasSubsections ? '<div class="items level3 hidden" id="section-submenu"></div>' : ""}
   `;
 
   const buttonsLevel2 = Array.from(sectionMenu.querySelectorAll(".items.level2 .item"));
 
   function renderSubmenu(parentId) {
     const subContainer = sectionMenu.querySelector("#section-submenu");
+    if (!subContainer) return;
     const parent = groups.find((g) => g.id === parentId);
     if (!subContainer || !parent) return;
 
