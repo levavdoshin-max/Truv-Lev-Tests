@@ -163,10 +163,9 @@ button {
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 18px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .panel {
@@ -177,21 +176,27 @@ button {
   padding: 18px 20px;
 }
 
+.top-menu {
+  padding: 20px 22px;
+}
+
 .sidebar-header h2 {
   margin-top: 4px;
   margin-bottom: 6px;
 }
 
 .doc-list {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .doc-card {
-  padding: 14px 14px 12px;
+  padding: 12px 14px;
+  min-width: 180px;
   border-radius: 12px;
-  background: var(--panel-2);
+  background: #fff;
   border: 1px solid #dfe6f3;
   cursor: pointer;
   transition: border-color 0.12s ease, transform 0.08s ease, background 0.2s ease;
@@ -209,7 +214,7 @@ button {
 
 .doc-card .title {
   font-weight: 700;
-  margin: 0 0 6px;
+  margin: 0 0 2px;
 }
 
 .doc-card .desc {
