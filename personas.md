@@ -106,9 +106,9 @@ Personas below change **which pain we press** and **which examples we use**, not
 ### What resonates
 
 - “No red failure screens. No ‘you blew it again’ copy.”
-- “Most days, your score will say: ‘You’re okay.’ When it drops, we explain why in human language.”
-- “Looking at your Vegas weekend, Cancun trip or ‘treat yourself’ month shouldn’t feel like punishment. It’s just information.”
-- “You can be gone for weeks and still be welcome when you come back.”
+- “Most days, your score will say: ‘You’re okay.’ When it drops, we explain why in plain language.”
+- “Looking at your Vegas weekend, Cancun trip or a ‘treat yourself’ month shouldn’t feel like punishment. It’s just information.”
+- “You don’t have to engage every day. myTruv is here when you’re ready to check in.”
 
 ### What to avoid
 
@@ -143,7 +143,7 @@ Personas below change **which pain we press** and **which examples we use**, not
 ### What resonates
 
 - “Check your whole money picture in the time it takes to scroll one screen.”
-- “Plain English explanations, no finance jargon.”
+- “Your score and trends are explained in plain English, not finance jargon.”
 - “One score that says whether you’re okay. If something needs attention, we tell you where and why.”
 - Examples around:
   - Disney trip,
@@ -180,7 +180,7 @@ Personas below change **which pain we press** and **which examples we use**, not
 ### Main pains
 
 - Constant underlying anxiety: “Can I afford a slow month? A trip? A new laptop?”
-- Hard to see whether they’re **actually progressing** or just surviving.
+- Doesn’t have a stable way to answer: “Am I actually progressing or just surviving?”
 - Daily or weekly gamification is emotionally brutal: numbers swing a lot.
 
 ### What resonates
