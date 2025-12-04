@@ -274,3 +274,55 @@ Use this for:
   3. Introduce **one score + one scroll + AI autopilot** as a softer alternative.
   4. End with a **gentle CTA**:
      - “If you’re tired of budgeting apps but still want to know you’re okay, myTruv might be the next thing to try.”
+
+---
+# myTruv — Financial Insight Taxonomy & SEO / Content Strategy
+
+---
+
+## 1. Taxonomy by Intent (for DB + FI Type / FI Subtype)
+
+Here is the taxonomy “like Claude’s JSON, but for myTruv and grouped by intent”.
+
+### 1.1. SAFETY_CHECK – “Am I basically okay?”
+
+**Goal:** one calm answer to “Am I safe / okay?” without shame.
+
+```json
+{
+  "id": "SAFETY_CHECK",
+  "name": "Safety & Calm Check",
+  "description": "Answering 'Am I basically okay?' based on Truv Score, cushion and stability.",
+  "insight_types": [
+    {
+      "id": "SYSTEM_HEALTH",
+      "name": "Overall System Health",
+      "subcategories": [
+        "TRUV_SCORE_STATUS",
+        "SCORE_TREND_CHANGE",
+        "RUNWAY_ESTIMATE",
+        "HEAVY_MONTH_BUT_SAFE"
+      ]
+    },
+    {
+      "id": "CUSHION_STATUS",
+      "name": "Cushion & Safety Net",
+      "subcategories": [
+        "LOW_OR_NO_EMERGENCY_FUND",
+        "CUSHION_IMPROVING_TREND",
+        "CUSHION_BEING_QUIETLY_USED",
+        "CUSHION_PROTECTED_FROM_NEW_DEBT"
+      ]
+    },
+    {
+      "id": "STABILITY_PATTERN",
+      "name": "Stability & Volatility",
+      "subcategories": [
+        "HIGH_MONTH_TO_MONTH_VOLATILITY",
+        "STABILITY_IMPROVING",
+        "ONE_OFF_SPIKE_EXPLAINED",
+        "NEW_BASELINE_SHIFT_DETECTED"
+      ]
+    }
+  ]
+}
