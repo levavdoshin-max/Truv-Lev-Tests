@@ -1,328 +1,213 @@
-<!-- seo.md -->
+<!-- overview.md / README.md -->
 
-# myTruv — SEO & Content Strategy (No‑Hustle AI Autopilot + One Score)
+# myTruv — Brand System Overview
 
-## 0. Purpose
+> **Leadership TL;DR**
+> - **What it is:** myTruv is an AI‑powered, no‑hustle money companion — not a classic budgeting app.
+> - **Core promise:** one calm score, one simple screen, and a few gentle insights; always worth opening, never shaming.
+> - **How it works:** sits on top of all your bank accounts and cards, understands your real‑life patterns (even with messy, fluctuating income) and runs the “money brain” in the background.
+> - **Brand tone:** light, kind, validating and practical — every touchpoint gives either reassurance (“you’re okay”) or one low‑effort next step.
 
-This file defines how myTruv shows up in **search** and **content**:
-
-- what topics we want to own,
-- what keywords we aim for,
-- how content supports the brand story:
-  - AI money companion,
-  - no‑hustle,
-  - one calm score,
-  - works with messy/irregular income,
-  - emotionally safe and shame‑free.
-
-Use this for:
-- planning blog posts & content hubs,
-- writing landing pages & `/vs` pages,
-- briefing writers / agencies.
+This is the **entry point** for the myTruv brand system — a **map of maps**.  
+Start here to understand how all brand docs fit together and how to use them.
 
 ---
 
-## 1. Global SEO Principles
+## 1. Purpose 🎯
 
-1. **Start from real emotional problems**  
-   - “Budgeting apps exhaust me.”
-   - “I have irregular income.”
-   - “I feel anxious about money.”
-   - “I don’t know what my trip/move actually cost.”
+This file exists to:
 
-2. **Tie every topic back to our promise**  
-   - no‑hustle,
-   - one score & one scroll,
-   - AI autopilot,
-   - shame‑free.
+- Give everyone a **shared mental model** of the myTruv brand:
+  - **Who we are:** an AI‑powered, no‑hustle financial behavior autopilot  
+    → one score, one scroll, calm guidance — even with messy, fluctuating income.
+  - **What we solve:** money that feels heavy, chaotic and guilt‑inducing, even for people who already use bank apps, spreadsheets and budgeting tools.
+- Explain **what each brand doc is for** and **when to use which**.
+- Act as the **source‑of‑truth index** for all brand, positioning, messaging, personas and SEO decisions.
 
-3. **Avoid clickbait and guilt**  
-   - No “Fix your bad money habits” headlines.
-   - Focus on *relief*, *clarity*, *small steps*.
+If you’re unsure where to look or how to talk about myTruv, you start here.
 
 ---
 
-## 2. Cluster: No‑Hustle / Autopilot Money Management
+## 2. How to Use This System 🧭
 
-### Keyword ideas
+Think of this folder as a stack:
 
-- no hustle money management
-- low effort money management
-- simple way to see my finances
-- money app without budgeting
-- money overview in one screen
-- check my finances at a glance
-- automatic money management app
-- AI money companion
-- money app that runs on autopilot
+- **Brand** defines **who we are** at a deep level.
+- **Positioning** defines **how we want people to perceive us** vs alternatives.
+- **Messaging** answers **what we say** in words.
+- **Personas** answer **who we’re talking to** and what they care about.
+- **SEO** answers **how people find us** in the wild (search, content).
 
-### Content ideas
+Use it like this:
 
-- “No‑hustle money management: why you don’t need another budgeting app”
-- “What a financial autopilot looks like in real life (and what it’s not)”
-- “How to check your whole money situation in one scroll”
-- “From spreadsheets to autopilot: turning your existing tools into a system”
-- “AI money companion vs. classic budgeting app: which one do you actually need?”
+1. **Start with `brand.md`**  
+   - When you need to align on **essence and principles**: values, tone, what we stand for, what we refuse to do.
+   - If a decision feels off, check against brand first.
 
----
+2. **Then read `positioning.md`**  
+   - When you’re framing myTruv vs **budgeting apps, bank apps, gamified finance tools**, etc.
+   - Use this for **product strategy, pitch decks, fundraising, high‑level marketing**.
 
-## 3. Cluster: One Financial Health / Money Wellbeing Score
+3. **Use `messaging.md` to write anything outward‑facing**  
+   - Websites, landing pages, ads, onboarding flows, product microcopy.
+   - It translates brand + positioning into **actual sentences** and examples.
 
-### Keyword ideas
+4. **Use `personas.md` when you need to choose a target or tone**  
+   - For campaigns, features, emails, flows.
+   - It helps you pick **who you’re talking to** (Exhausted Power User, Emotional iOS Spender, Self‑Employed with chaotic income, etc.) and adjust nuance.
 
-- financial health score app
-- money wellbeing score
-- money score app
-- personal finance score like credit score
-- see my financial health in one number
-- financial wellness score
-- alternative to credit score for money health
+5. **Use `seo.md` for search & content**  
+   - For blog topics, landing pages, and keyword strategy.
+   - It makes sure our **no‑hustle, one‑score, AI‑autopilot** story shows up where people are actually searching.
 
-### Content ideas
+Whenever you’re stuck:
 
-- “Why a single financial wellbeing score is easier to live with than ten dashboards”
-- “Credit score vs money wellbeing score: what’s the difference?”
-- “How one calm number can reduce money anxiety”
-- “What goes into a money wellbeing score (without exposing your raw numbers)”
-- “Income vs system health: why your salary isn’t the whole story”
+- **What are we?** → `brand.md`  
+- **How are we different?** → `positioning.md`  
+- **What exactly should we say?** → `messaging.md`  
+- **Who am I talking to?** → `personas.md`  
+- **How do they discover us?** → `seo.md`
 
 ---
 
-## 4. Cluster: Irregular / Fluctuating Income
+## 3. Table of Contents 📚
 
-### Keyword ideas
+Quick map of all core files with why they exist.
 
-- budgeting with irregular income
-- manage money when income fluctuates
-- app for freelancers with irregular income
-- how to manage money with variable income
-- cashflow overview without detailed budgeting
-- money management for self‑employed
-- AI cashflow assistant
+| File            | What it covers                     | Use it when…                       |
+| --------------- | ----------------------------------- | ---------------------------------- |
+| `brand.md`      | Essence, values, feelings          | Big decisions, creative briefs     |
+| `positioning.md`| Market framing & differentiation    | Pitches, strategy, investor decks  |
+| `messaging.md`  | Phrases, narratives, examples      | Writing copy                       |
+| `personas.md`   | Who we talk to                     | Targeting, tone                    |
+| `seo.md`        | Keywords, content angles, IA       | Blog & landing pages               |
 
-### Content ideas
+### 3.1 Brand
 
-- “Irregular income, simple picture: how to see if you’re still okay”
-- “You don’t need a perfect budget to understand your money with variable income”
-- “One glance, not a spreadsheet: money clarity for freelancers and creators”
-- “How an AI money autopilot can smooth your cashflow ups and downs”
-- “Self‑employed, chaotic income: building buffers without becoming your own accountant”
+- **`brand.md` — Brand Guide**
+  - **What it is:** The core definition of myTruv’s identity.
+  - **What’s inside:**
+    - Brand essence: AI‑powered, no‑hustle money companion for messy real life.
+    - Feelings we want to create: light, kind, always worth opening, never shaming.
+    - Value prop, emotional hook, high‑level copy examples, tone & personality.
+  - **Use when:**
+    - Making big product or marketing decisions.
+    - Arguing about tone, visuals, or “does this feel like us?”
+    - Onboarding new team members.
 
----
+### 3.2 Positioning
 
-## 5. Cluster: Money Anxiety, Guilt & Avoidance
+- **`positioning.md` — Positioning (No‑Hustle Autopilot & One Score)**
+  - **What it is:** How we frame myTruv in the market and in people’s heads.
+  - **What’s inside:**
+    - Positioning statement.
+    - What we stand against (heavy budgeting, guilt‑driven gamification, dashboard overload).
+    - How we’re different: one score, one scroll, calm explanations, AI behavior autopilot, works with fluctuating income.
+    - Functional + emotional benefits.
+  - **Use when:**
+    - Writing pitches, decks, “What is myTruv?” explainers.
+    - Deciding which features reinforce / violate the story.
+    - Comparing to budgeting apps, bank apps, Credit Karma, gamified finance.
 
-### Keyword ideas
+### 3.3 Messaging
 
-- money anxiety app
-- app to feel calmer about money
-- stressed about money but don’t want budgeting
-- overwhelmed by budgeting apps
-- money guilt
-- avoid looking at bank account
-- money app that doesn’t shame you
+- **`messaging.md` — Messaging (No‑Hustle AI Autopilot & One‑Score)**
+  - **What it is:** The **language layer**: concrete phrases, narratives, and examples.
+  - **What’s inside:**
+    - Core one‑liners and alternates.
+    - Narrative from problem → insight → solution → outcome.
+    - JTBD‑based messages for low‑effort control, fluctuating income, anxiety, impulsive spending, life events (trips, moves, repairs, bills).
+    - “What we don’t say” and safer alternatives.
+  - **Use when:**
+    - Writing homepage, feature pages, emails, ads, app store copy.
+    - Designing onboarding / empty states / in‑product education.
+    - Checking that new copy stays shame‑free, no‑hustle and on‑position.
 
-### Content ideas
+### 3.4 Personas
 
-- “You don’t need more spreadsheets. You need to know you’re okay.”
-- “A gentle money app: how myTruv avoids shaming you”
-- “From panic to ‘it’s fine’: how one score can ease money anxiety”
-- “Why classic budgeting apps can make money anxiety worse”
-- “How to check your bank account without spiralling into guilt”
+- **`personas.md` — Personas (No‑Hustle AI Companion)**
+  - **What it is:** The main **audience patterns** derived from research.
+  - **What’s inside:**
+    - Exhausted Power User (tool fatigue).
+    - Emotional iOS Spender (guilt, avoidance, impulse).
+    - Working Middle America (busy, wants quick check‑ins).
+    - Self‑Employed with Chaotic Income (lumpy cashflow, taxes).
+    - Anxiety‑heavy “Some College” pattern (identity + shame).
+    - What resonates / what to avoid for each.
+  - **Use when:**
+    - Choosing target segment for a feature, campaign, or landing page.
+    - Adjusting copy tone and emphasis.
+    - Prioritising which pain to solve first.
 
----
+### 3.5 SEO & Content
 
-## 6. Cluster: Trips & Life Events (Vegas / Cancun / Disney, moves, repairs)
-
-### Keyword ideas
-
-- track vacation spending automatically
-- how much did my Vegas weekend cost
-- how much did my Cancun trip cost
-- see how much I spent on Disney trip
-- categorize travel expenses automatically
-- see how much I spent on vacation
-- how much did my move cost
-- track cost of moving apartments
-- track car repair costs automatically
-- medical bill impact on finances
-
-### Content ideas
-
-- “How to find out what your Vegas weekend or Cancun trip really cost (without building a spreadsheet)”
-- “Connect your bank, see your Disney trip — no manual work”
-- “Trip stories, not transaction dumps: a humane way to see your travel spending”
-- “What your move / car repair / medical bill actually did to your financial health”
-- “From bachelorette weekends to family beach trips: turning messy card swipes into clear stories”
-
----
-
-## 7. Cluster: Alternatives to Budgeting & Gamified Finance Apps
-
-### Keyword ideas
-
-- alternative to budgeting apps
-- budgeting apps don’t work for me
-- tired of budgeting app
-- hate budgeting app
-- finance app without gamification
-- money app without streaks
-- app like Credit Karma but for overall finances
-
-### Content ideas
-
-- “Why budgeting apps and daily streaks don’t work for everyone”
-- “You don’t need financial rings — you need one calm score”
-- “If budgeting apps make you feel guilty, try a no‑hustle alternative”
-- “Credit Karma for your whole money life: one score, not just your debt”
-- “Gamification vs gentle progress: designing money tools that people actually open”
-
----
-
-## 8. Cluster: Quick Check‑ins for Busy People
-
-### Keyword ideas
-
-- quick way to check my finances
-- see all my money in one place quickly
-- money overview for busy professionals
-- personal finance app for people with no time
-- check finances in 30 seconds
-
-### Content ideas
-
-- “How to check your whole money situation in under 30 seconds”
-- “One score, one scroll: the busy person’s money check‑in”
-- “Why your money app should feel more like a weather check than a weekly ritual”
-- “From Sunday money reviews to 30‑second AI check‑ins”
+- **`seo.md` — SEO & Content Strategy (No‑Hustle Autopilot + One Score)**
+  - **What it is:** How we **show up in search** and structure content around our story.
+  - **What’s inside:**
+    - Keyword clusters for:
+      - no‑hustle money management / autopilot,
+      - financial wellbeing score,
+      - irregular income,
+      - money anxiety and guilt,
+      - trips & life stories (Vegas, Cancun, Disney, moves, repairs),
+      - alternatives to budgeting apps & gamified finance,
+      - quick check‑ins for busy, online people.
+    - Content ideas and site structure (home, product, use cases, comparisons, blog clusters).
+    - Tone notes for SEO articles.
+  - **Use when:**
+    - Planning blog posts, landing pages, and “/vs” comparison pages.
+    - Briefing writers or agencies.
+    - Ensuring SEO content still feels on‑brand (calm, supportive, no shame).
 
 ---
 
-## 9. Cluster: Students & Early‑Stage Adults
+## 4. Operating Rules ⚙️
 
-### Keyword ideas
+### 4.1 Source of Truth
 
-- money app for students
-- how to manage money in college
-- first job money mistakes
-- simple money app for beginners
-- I feel behind with money in my 20s
+- This repo is the **single source of truth** for:
+  - Brand identity (who we are).
+  - Positioning (how we’re different).
+  - Messaging (what we say, what we avoid).
+  - Personas (who we target).
+  - SEO direction (how we’re discovered).
+- If there is a conflict between:
+  - **slides / Notion / Figma / random docs** and these files → **these files win**.
+- Internal hierarchy if there’s a clash:
+  1. `brand.md`
+  2. `positioning.md`
+  3. `messaging.md`
+  4. `personas.md`
+  5. `seo.md`
 
-### Content ideas
+### 4.2 Updates Policy
 
-- “You’re not behind: a kind money guide for your 20s”
-- “First job, first paycheck: a low‑stress way to watch your money”
-- “How to see if you’re okay with money without turning into a finance nerd”
-- “What our money score tells you if you’re just starting out”
+**When to update**
 
----
+- When **product reality shifts** (e.g. we add/remove a core concept like the score, autopilot logic, target segments).
+- When **data contradicts assumptions** (user research, quant, behaviour).
+- When messaging is consistently **misunderstood** or attracts the wrong audience.
+- When **market context changes** (e.g. big competitor moves).
 
-## 10. Site & Content Structure
+**How to update**
 
-### 10.1 Core pages
+- Treat these docs like **code for the brand**:
+  - Changes should be **intentional and documented**, not random edits.
+  - Ideally:
+    - Propose changes via PR / change request / tracked comments.
+    - Include a short **changelog entry** at the top or bottom of the file.
+- For substantial changes:
+  - Discuss with **brand/marketing + product** stakeholders.
+  - Make sure updates are consistent across:
+    - `brand.md` ↔ `positioning.md` ↔ `messaging.md`.
 
-- `/` — Home  
-  - H1 examples:
-    - “See your money in one score and one scroll.”
-    - “AI‑powered, no‑hustle money companion.”
-  - Above‑the‑fold:
-    - one calm score,
-    - autopilot,
-    - works with messy income,
-    - shame‑free.
+### 4.3 Versioning
 
-- `/product` — How no‑hustle financial autopilot works  
-- `/product/score` — Financial wellbeing score  
-- `/product/overview` — One‑scroll overview  
-- `/product/autopilot` — Behavior autopilot & AI  
-- `/product/stories` — Trips & life events view
+To keep changes transparent and reversible:
 
-### 10.2 Use‑case pages
+- Each core file (`README.md`, `brand.md`, `positioning.md`, `messaging.md`, `personas.md`, `seo.md`) should have:
 
-- `/use-cases/irregular-income`
-- `/use-cases/anxious-about-money`
-- `/use-cases/travel-spending`
-- `/use-cases/busy-professionals`
-- `/use-cases/exhausted-power-users`
-
-### 10.3 Comparison pages
-
-- `/vs/budgeting-apps`
-- `/vs/gamified-finance`
-- `/vs/spreadsheets`
-
-### 10.4 Blog clusters
-
-- no‑hustle money management
-- financial wellbeing score
-- irregular income & cashflow
-- money anxiety & emotional safety
-- trips & life events
-- alternatives to budgeting tools
-- quick money check‑ins
-
----
-
-## 11. Tone for SEO Content
-
-- Same calm, supportive tone as product:
-  - Avoid “fix your bad habits” / “stop wasting money”.
-  - Prefer “see your situation clearly”, “feel okay looking at your accounts”.
-- Every piece should:
-  1. Start from a **real emotional pain**.
-  2. Explain why classic tools feel heavy or shaming.
-  3. Introduce **one score + one scroll + AI autopilot** as a softer alternative.
-  4. End with a **gentle CTA**:
-     - “If you’re tired of budgeting apps but still want to know you’re okay, myTruv might be the next thing to try.”
-
----
-# myTruv — Financial Insight Taxonomy & SEO / Content Strategy
-
----
-
-## 1. Taxonomy by Intent (for DB + FI Type / FI Subtype)
-
-Here is the taxonomy “like Claude’s JSON, but for myTruv and grouped by intent”.
-
-### 1.1. SAFETY_CHECK – “Am I basically okay?”
-
-**Goal:** one calm answer to “Am I safe / okay?” without shame.
-
-```json
-{
-  "id": "SAFETY_CHECK",
-  "name": "Safety & Calm Check",
-  "description": "Answering 'Am I basically okay?' based on Truv Score, cushion and stability.",
-  "insight_types": [
-    {
-      "id": "SYSTEM_HEALTH",
-      "name": "Overall System Health",
-      "subcategories": [
-        "TRUV_SCORE_STATUS",
-        "SCORE_TREND_CHANGE",
-        "RUNWAY_ESTIMATE",
-        "HEAVY_MONTH_BUT_SAFE"
-      ]
-    },
-    {
-      "id": "CUSHION_STATUS",
-      "name": "Cushion & Safety Net",
-      "subcategories": [
-        "LOW_OR_NO_EMERGENCY_FUND",
-        "CUSHION_IMPROVING_TREND",
-        "CUSHION_BEING_QUIETLY_USED",
-        "CUSHION_PROTECTED_FROM_NEW_DEBT"
-      ]
-    },
-    {
-      "id": "STABILITY_PATTERN",
-      "name": "Stability & Volatility",
-      "subcategories": [
-        "HIGH_MONTH_TO_MONTH_VOLATILITY",
-        "STABILITY_IMPROVING",
-        "ONE_OFF_SPIKE_EXPLAINED",
-        "NEW_BASELINE_SHIFT_DETECTED"
-      ]
-    }
-  ]
-}
+  ```md
+  Version: 0.3
+  Last updated: 2025‑12‑04
+  Owner: <Name / Role>
