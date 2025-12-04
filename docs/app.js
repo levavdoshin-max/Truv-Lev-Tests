@@ -58,6 +58,8 @@ const sectionMenu = document.getElementById("section-menu");
 
 let activeDoc = docs[0];
 let headingObserver;
+let headingObserverH2;
+let activeTopId;
 
 function renderDocList() {
   docList.innerHTML = "";
@@ -127,45 +129,123 @@ function buildSectionMenu() {
       id,
       text: el.textContent || "Section",
       level: el.tagName.toLowerCase(),
+      node: el,
     };
   });
+
+  const groups = [];
+  let currentGroup = null;
+
+  items.forEach((item) => {
+    if (item.level === "h2") {
+      currentGroup = { ...item, children: [] };
+      groups.push(currentGroup);
+    } else if (item.level === "h3" && currentGroup) {
+      currentGroup.children.push(item);
+    } else if (item.level === "h3" && !currentGroup) {
+      // If doc starts with h3, create a placeholder group
+      const placeholder = {
+        id: "section",
+        text: "Sections",
+        level: "h2",
+        children: [item],
+      };
+      groups.push(placeholder);
+      currentGroup = placeholder;
+    }
+  });
+
+  activeTopId = activeTopId || (groups[0] ? groups[0].id : null);
 
   sectionMenu.innerHTML = `
     <div class="section-menu-header">
       <p class="eyebrow">Sections</p>
       <h3>Jump within this doc</h3>
     </div>
-    <div class="items">
-      ${items
+    <div class="items level2">
+      ${groups
         .map(
           (item) => `
-            <button class="item level-${item.level === "h3" ? "3" : "2"}" data-target="${item.id}">
+            <button class="item level-2" data-target="${item.id}">
               ${item.text}
             </button>
           `
         )
         .join("")}
     </div>
+    <div class="items level3" id="section-submenu"></div>
   `;
 
-  const buttons = Array.from(sectionMenu.querySelectorAll(".item"));
-  buttons.forEach((button) => {
+  const buttonsLevel2 = Array.from(sectionMenu.querySelectorAll(".items.level2 .item"));
+
+  function renderSubmenu(parentId) {
+    const subContainer = sectionMenu.querySelector("#section-submenu");
+    const parent = groups.find((g) => g.id === parentId);
+    if (!subContainer || !parent) return;
+
+    subContainer.innerHTML =
+      parent.children.length === 0
+        ? `<span class="note">No subsections</span>`
+        : parent.children
+            .map(
+              (child) => `
+          <button class="item level-3" data-target="${child.id}">
+            ${child.text}
+          </button>
+        `
+            )
+            .join("");
+
+    const buttonsLevel3 = Array.from(subContainer.querySelectorAll(".item.level-3"));
+    buttonsLevel3.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-target");
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
+  buttonsLevel2.forEach((button) => {
     button.addEventListener("click", () => {
       const targetId = button.getAttribute("data-target");
       const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      activeTopId = targetId;
+      buttonsLevel2.forEach((b) => b.classList.toggle("active", b === button));
+      renderSubmenu(targetId);
+      if (targetEl) targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
+  if (buttonsLevel2.length) {
+    buttonsLevel2.forEach((btn) => btn.classList.toggle("active", btn.getAttribute("data-target") === activeTopId));
+    renderSubmenu(activeTopId);
+  }
+
   if (headingObserver) headingObserver.disconnect();
+  if (headingObserverH2) headingObserverH2.disconnect();
+
+  headingObserverH2 = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          activeTopId = id;
+          buttonsLevel2.forEach((btn) => btn.classList.toggle("active", btn.getAttribute("data-target") === id));
+          renderSubmenu(id);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -60% 0px", threshold: 0.1 }
+  );
+
   headingObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
-          buttons.forEach((btn) => {
+          const subButtons = Array.from(sectionMenu.querySelectorAll(".items.level3 .item"));
+          subButtons.forEach((btn) => {
             btn.classList.toggle("active", btn.getAttribute("data-target") === id);
           });
         }
@@ -174,9 +254,10 @@ function buildSectionMenu() {
     { rootMargin: "0px 0px -60% 0px", threshold: 0.1 }
   );
 
-  headings.forEach((el) => headingObserver.observe(el));
-
-  if (buttons[0]) buttons[0].classList.add("active");
+  items.forEach((item) => {
+    if (item.level === "h2") headingObserverH2.observe(item.node);
+    if (item.level === "h3") headingObserver.observe(item.node);
+  });
 }
 
 async function loadDoc(docId, opts = {}) {
