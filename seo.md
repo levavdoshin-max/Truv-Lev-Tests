@@ -1,523 +1,429 @@
-<!-- myTruv: Financial Insight Taxonomy + SEO & Content Strategy -->
+<!-- myTruv: FI Taxonomy (compact, extended subtypes) -->
 
-# myTruv — Financial Insight Taxonomy & SEO / Content Strategy
+# myTruv — FI Taxonomy (extended) + Action / Income / Risk
 
-Working doc for:
+> Жирная версия: без философии, только онтология + расширенные субтайпы и экшены.
 
-- financial insight taxonomy (FI Type / FI Subtype / Action),
-- classification prompts,
-- SEO & content strategy for myTruv.
+Use as **closed lists** for prompts and mappings: `FI Type` → `FI Subtype` → `Action` → `Income` / `Risk`.
 
 ---
 
-## 1. Financial Insight Taxonomy (by Intent)
+## 1. FI Type (20 — unchanged)
 
-Here is the taxonomy “like Claude’s JSON, but for myTruv and grouped by intent”.
-
-Each **Intent** groups a set of **Insight Types** and **Subcategories** that become:
-
-- `FI Type`  = `insight_types.name`
-- `FI Subtype` = each entry in `subcategories`
-
-You’ll use these in prompts, DB schemas and UI labels.
-
----
-
-### 1.1. SAFETY_CHECK – “Am I basically okay?”
-
-**Goal:** one calm answer to “Am I safe / okay?” without shame.
-
-**JSON:**
-
-~~~json
-{
-  "id": "SAFETY_CHECK",
-  "name": "Safety & Calm Check",
-  "description": "Answering 'Am I basically okay?' based on Truv Score, cushion and stability.",
-  "insight_types": [
-    {
-      "id": "SYSTEM_HEALTH",
-      "name": "Overall System Health",
-      "subcategories": [
-        "TRUV_SCORE_STATUS",
-        "SCORE_TREND_CHANGE",
-        "RUNWAY_ESTIMATE",
-        "HEAVY_MONTH_BUT_SAFE"
-      ]
-    },
-    {
-      "id": "CUSHION_STATUS",
-      "name": "Cushion & Safety Net",
-      "subcategories": [
-        "LOW_OR_NO_EMERGENCY_FUND",
-        "CUSHION_IMPROVING_TREND",
-        "CUSHION_BEING_QUIETLY_USED",
-        "CUSHION_PROTECTED_FROM_NEW_DEBT"
-      ]
-    },
-    {
-      "id": "STABILITY_PATTERN",
-      "name": "Stability & Volatility",
-      "subcategories": [
-        "HIGH_MONTH_TO_MONTH_VOLATILITY",
-        "STABILITY_IMPROVING",
-        "ONE_OFF_SPIKE_EXPLAINED",
-        "NEW_BASELINE_SHIFT_DETECTED"
-      ]
-    }
-  ]
-}
-~~~
+1. Overall system health  
+2. Cushion & safety net  
+3. Stability & volatility  
+4. Subscriptions & recurring  
+5. Banking & fee leaks  
+6. Everyday spending leaks  
+7. Cash yield & idle money  
+8. Income & bill timing  
+9. Buffers & future shocks  
+10. Savings & cushion behavior  
+11. Trips & life event stories  
+12. Debt cost & structure  
+13. Credit score & behavior  
+14. Insurance & protection  
+15. Fraud, identity & P2P risk  
+16. Tax optimization & credits  
+17. Employer & tax-advantaged accounts  
+18. Investing & long-term growth  
+19. Income, skills & career  
+20. Habits & education progress  
 
 ---
 
-### 1.2. QUICK_WINS – “Show me easy wins & leaks”
+## 2. FI Subtype (expanded per FI Type)
 
-**Goal:** high‑ROI, low‑effort fixes (subscriptions, fees, small leaks).
+### 2.1. Overall system health
 
-**JSON:**
+- Truv score status  
+- Score trend change  
+- Runway estimate  
+- Heavy month but safe  
+- Chronic shortfall pattern  
+- Structural surplus pattern  
+- Approaching critical threshold  
+- Recovery after recent shock  
 
-~~~json
-{
-  "id": "QUICK_WINS",
-  "name": "Quick Wins & Leak Fixes",
-  "description": "Fast, low-hassle wins: kill leaks, reduce dumb costs, capture obvious opportunities.",
-  "insight_types": [
-    {
-      "id": "SUBSCRIPTION_LEAKS",
-      "name": "Subscriptions & Recurring",
-      "subcategories": [
-        "SUBSCRIPTION_REDUNDANCY",
-        "SUBSCRIPTION_UNDERUTILIZED",
-        "SUBSCRIPTION_HIDDEN_OR_FORGOTTEN",
-        "SUBSCRIPTION_PRICE_INCREASE",
-        "FREE_TRIAL_ABOUT_TO_START_CHARGING"
-      ]
-    },
-    {
-      "id": "BANK_FEES_LEAKS",
-      "name": "Banking & Fee Leaks",
-      "subcategories": [
-        "CHECKING_ACCOUNT_FEES",
-        "ATM_FEE_PATTERN",
-        "OVERDRAFT_PATTERN_DETECTED",
-        "FOREIGN_TRANSACTION_FEES",
-        "WIRE_TRANSFER_EXCESSIVE"
-      ]
-    },
-    {
-      "id": "DAILY_SPEND_LEAKS",
-      "name": "Everyday Spending Leaks",
-      "subcategories": [
-        "SMALL_DAILY_PURCHASES_ADD_UP",
-        "DELIVERY_CREEP_PATTERN",
-        "CATEGORY_OVERSPEND_VS_SELF_BASELINE",
-        "IMPULSE_SPENDING_PATTERN"
-      ]
-    },
-    {
-      "id": "YIELD_LEAKS",
-      "name": "Cash Yield & Idle Money",
-      "subcategories": [
-        "IDLE_CASH_DETECTED",
-        "SAVINGS_RATE_SUBOPTIMAL",
-        "LOW_YIELD_CHECKING_BALANCE_HIGH",
-        "MOVE_CASH_TO_HIGH_YIELD_OPPORTUNITY"
-      ]
-    }
-  ]
-}
-~~~
+### 2.2. Cushion & safety net
 
----
+- Low or no emergency fund  
+- Cushion improving trend  
+- Cushion being quietly used  
+- Cushion protected from new debt  
+- Emergency fund gap  
+- Cushion below target months  
+- Cushion above target but idle  
+- Cushion concentrated in one account  
+- Cushion partly illiquid or locked  
 
-### 1.3. CASHFLOW_STABILITY – “Make my system more stable”
+### 2.3. Stability & volatility
 
-**Goal:** smooth noisy income & big bills, build buffers, explain weird months.
+- High month to month volatility  
+- Stability improving  
+- One-off spike explained  
+- New baseline shift detected  
+- Income volatility driving instability  
+- Expense volatility driving instability  
+- Volatility concentrated in single category  
+- Volatility linked to seasonality  
+- Frequent small shocks pattern  
 
-**JSON:**
+### 2.4. Subscriptions & recurring
 
-~~~json
-{
-  "id": "CASHFLOW_STABILITY",
-  "name": "Cashflow & Cushion Building",
-  "description": "Smoothing chaos: irregular income, bad bill timing, big shocks – so the system feels stable.",
-  "insight_types": [
-    {
-      "id": "CASHFLOW_TIMING",
-      "name": "Income & Bill Timing",
-      "subcategories": [
-        "BILL_CYCLE_ALIGNMENT_ISSUE",
-        "PAYCHECK_AND_BILLS_MISALIGNED",
-        "LARGE_PAYMENTS_CLUSTERED",
-        "INCOME_SMOOTHING_OPPORTUNITY"
-      ]
-    },
-    {
-      "id": "BUFFER_PLANNING",
-      "name": "Buffers & Future Shocks",
-      "subcategories": [
-        "TAX_BUFFER_INSUFFICIENT",
-        "IRREGULAR_EXPENSE_BUFFER_MISSING",
-        "UPCOMING_KNOWN_BIG_BILL",
-        "SEASONAL_EXPENSE_PATTERN"
-      ]
-    },
-    {
-      "id": "SAVINGS_BEHAVIOR",
-      "name": "Savings & Cushion Behavior",
-      "subcategories": [
-        "IRREGULAR_SAVINGS_PATTERN",
-        "NO_AUTOMATIC_SAVINGS",
-        "SAVINGS_VS_DEBT_TRADEOFF_OFF",
-        "SHORT_TERM_GOAL_UNDERFUNDED"
-      ]
-    },
-    {
-      "id": "BIG_EVENT_STORIES",
-      "name": "Trips & Life Event Stories",
-      "subcategories": [
-        "TRAVEL_TRIP_COST_SUMMARY",
-        "MOVE_APARTMENT_COST_SUMMARY",
-        "CAR_REPAIR_COST_IMPACT",
-        "MEDICAL_BILL_IMPACT",
-        "GADGET_OR_FURNITURE_UPGRADE_IMPACT"
-      ]
-    }
-  ]
-}
-~~~
+- Subscription redundancy  
+- Subscription underutilized  
+- Subscription hidden or forgotten  
+- Subscription price increase  
+- Free trial about to start charging  
+- Free trial expired  
+- Subscription rotation opportunity  
+- Subscription tier mismatch  
+- Subscription bundle savings  
+- Subscription annual vs monthly  
+- Subscription overlapped by employer benefit  
+- Subscription seasonality mismatch  
+- Subscription cheaper regional or currency option  
+- Family or shared plan savings opportunity  
 
----
+### 2.5. Banking & fee leaks
 
-### 1.4. RISK_REDUCTION – “Reduce risk & expensive stress”
+- Checking account fees  
+- ATM fee pattern  
+- Overdraft pattern detected  
+- Foreign transaction fees  
+- Wire transfer excessive  
+- Minimum balance inefficient  
+- Account consolidation opportunity  
+- Dormant account fee risk  
+- Excessive cash withdrawal usage  
+- Fragmented small balances across accounts  
+- Cash deposit fee pattern  
 
-**Goal:** reduce chances of expensive pain: bad debt, credit issues, insurance gaps, fraud.
+### 2.6. Everyday spending leaks
 
-**JSON:**
+- Small daily purchases add up  
+- Delivery creep pattern  
+- Category overspend vs self baseline  
+- Category overspend vs peers  
+- Impulse spending pattern  
+- Merchant price variance  
+- Duplicate charge suspected  
+- Spending spike detected  
+- Seasonal overspend  
+- Merchant alternative cheaper  
+- Bulk purchase savings  
+- Vendor consolidation  
+- Price match opportunity  
+- Membership ROI negative  
+- Local vs chain savings  
+- Commute cost optimization  
+- Meal delivery vs grocery  
+- Entertainment bundling  
+- Gym usage vs cost  
+- Utility usage pattern  
+- Childcare optimization  
+- Lifestyle cost benchmark  
+- Spending vs peer cohort  
+- Eating out vs grocery imbalance  
+- Coffee and snack pattern  
+- Ride-hail vs public transport imbalance  
+- Convenience and service fee pattern  
+- In-app purchase leak pattern  
+- Gifts and social obligation spending spike  
 
-~~~json
-{
-  "id": "RISK_REDUCTION",
-  "name": "Risk & Stress Reduction",
-  "description": "Reducing chances of big pain: expensive debt, credit risk, coverage gaps, fraud and identity issues.",
-  "insight_types": [
-    {
-      "id": "DEBT_STRESS",
-      "name": "Debt Cost & Structure",
-      "subcategories": [
-        "HIGH_INTEREST_DEBT_BURDEN",
-        "PAYMENT_ORDER_SUBOPTIMAL",
-        "REFINANCE_OR_CONSOLIDATION_OPPORTUNITY",
-        "MISSED_OR_LATE_PAYMENTS_RISK",
-        "BNPL_OVERUSE_PATTERN"
-      ]
-    },
-    {
-      "id": "CREDIT_HEALTH",
-      "name": "Credit Score & Behavior",
-      "subcategories": [
-        "HIGH_CREDIT_UTILIZATION",
-        "TOO_MANY_RECENT_INQUIRIES",
-        "NEGATIVE_MARKS_PRESENT",
-        "THIN_CREDIT_FILE",
-        "CARD_REWARDS_SUBOPTIMAL"
-      ]
-    },
-    {
-      "id": "INSURANCE_GAPS",
-      "name": "Insurance & Protection",
-      "subcategories": [
-        "INSURANCE_GAP_IDENTIFIED",
-        "INSURANCE_OVERLAP_DETECTED",
-        "DEDUCTIBLE_NOT_ALIGNED_WITH_RISK",
-        "CRITICAL_COVERAGE_MISSING"
-      ]
-    },
-    {
-      "id": "FRAUD_IDENTITY",
-      "name": "Fraud, Identity & P2P Risk",
-      "subcategories": [
-        "IDENTITY_THEFT_RISK_PATTERN",
-        "SUSPICIOUS_P2P_TRANSFERS",
-        "LACK_OF_DIGITAL_FOOTPRINT_FOR_CASH",
-        "CREDIT_MONITORING_RECOMMENDED"
-      ]
-    }
-  ]
-}
-~~~
+### 2.7. Cash yield & idle money
 
----
+- Idle cash detected  
+- Savings rate suboptimal  
+- Low-yield checking balance high  
+- Move cash to high-yield opportunity  
+- Savings rate comparison  
+- Cash above insurance limit  
+- Excess cash vs long-term goals  
+- Fragmented savings balances  
+- Missed high-yield promo opportunity  
 
-### 1.5. GROWTH_UPGRADE – “Help me grow & upgrade my system”
+### 2.8. Income & bill timing
 
-**Goal:** not just fixing problems, but using benefits, taxes, investing, income and learning to level up.
+- Bill cycle alignment issue  
+- Bill cycle alignment  
+- Paycheck and bills misaligned  
+- Payment date optimization  
+- Large payments clustered  
+- Income smoothing opportunity  
+- Income smoothing  
+- Float management  
+- Seasonal arbitrage  
+- Paycheck optimization  
+- Housing payment timing misaligned with income  
+- Credit card due dates poorly staggered  
+- Recurring charges scattered across month  
 
-**JSON:**
+### 2.9. Buffers & future shocks
 
-~~~json
-{
-  "id": "GROWTH_UPGRADE",
-  "name": "Growth, Benefits & Learning",
-  "description": "Using taxes, benefits, investing, income and knowledge to make the system stronger over time.",
-  "insight_types": [
-    {
-      "id": "TAX_OPPORTUNITIES",
-      "name": "Tax Optimization & Credits",
-      "subcategories": [
-        "TAX_WITHHOLDING_ADJUSTMENT",
-        "TAX_DEDUCTION_MISSED",
-        "TAX_CREDIT_ELIGIBLE",
-        "EDUCATION_OR_STUDENT_LOAN_TAX_BENEFIT",
-        "RSU_OR_EQUITY_TAX_DRAG"
-      ]
-    },
-    {
-      "id": "BENEFITS_AND_ACCOUNTS",
-      "name": "Employer & Tax-Advantaged Accounts",
-      "subcategories": [
-        "401K_MATCH_NOT_MAXIMIZED",
-        "HSA_FSA_UNDERUTILIZED",
-        "COMMUTER_BENEFIT_UNCLAIMED",
-        "ESPP_NOT_ENROLLED",
-        "GOV_ASSISTANCE_OR_PROGRAM_ELIGIBLE"
-      ]
-    },
-    {
-      "id": "INVESTING_UPGRADE",
-      "name": "Investing & Long-Term Growth",
-      "subcategories": [
-        "NOT_INVESTING_WITH_AVAILABLE_SURPLUS",
-        "INVESTMENT_FEE_HIGH",
-        "ASSET_ALLOCATION_MISALIGNED",
-        "TOO_MUCH_CASH_VS_LONG_TERM",
-        "DCA_OR_AUTOMATION_OPPORTUNITY"
-      ]
-    },
-    {
-      "id": "INCOME_AND_SKILLS",
-      "name": "Income, Skills & Career",
-      "subcategories": [
-        "SIDE_INCOME_OPPORTUNITY",
-        "RAISE_NEGOTIATION_TIMING",
-        "FREELANCE_TAX_OPTIMIZATION",
-        "EMPLOYER_EDUCATION_BENEFITS_UNUSED"
-      ]
-    },
-    {
-      "id": "HABITS_EDUCATION",
-      "name": "Habits & Education Progress",
-      "subcategories": [
-        "EDUCATION_GAP_ON_CORE_TOPICS",
-        "LOW_ENGAGEMENT_WITH_LEARNING_CONTENT",
-        "IMPROVEMENT_TREND_BUT_NOT_STABLE",
-        "STRONG_DISCIPLINE_AND_STREAKS"
-      ]
-    }
-  ]
-}
-~~~
+- Tax buffer insufficient  
+- Irregular expense buffer missing  
+- Upcoming known big bill  
+- Seasonal expense pattern  
+- Seasonal price pattern  
+- Holiday spending strategy  
+- Annual sale timing  
+- Back to school optimization  
+- Weather based savings  
+- Tax season prep  
+- Upcoming life event cost (wedding, baby, move)  
+- Expected subscription or price hike  
+- Vehicle replacement or major repair forecast  
+- Home or appliance maintenance cycle  
 
----
+### 2.10. Savings & cushion behavior
 
-## 2. Mapping to FI Type / FI Subtype
+- Irregular savings pattern  
+- No automatic savings  
+- Savings vs debt tradeoff off  
+- Short-term goal underfunded  
+- Savings automation gap  
+- Savings repeatedly withdrawn for non-essentials  
+- Goal conflicts within savings buckets  
+- Overfunded low-priority goal  
+- Long-term savings held in low-yield account  
 
-For the classification prompts, you can use:
+### 2.11. Trips & life event stories
 
-- **FI Type** = `insight_types.name`  
-  (e.g. `"Subscriptions & Recurring"`, `"Debt Cost & Structure"`, `"Trips & Life Event Stories"`)
+- Travel trip cost summary  
+- Travel booking timing  
+- Move apartment cost summary  
+- Car repair cost impact  
+- Medical bill impact  
+- Gadget or furniture upgrade impact  
+- Wedding or celebration cost impact  
+- New child or family expansion cost impact  
+- Education or training cost summary  
+- Major pet expense impact  
 
-- **FI Subtype** = each value in `subcategories`  
-  (e.g. `"SUBSCRIPTION_HIDDEN_OR_FORGOTTEN"`, `"HIGH_CREDIT_UTILIZATION"`, `"TRAVEL_TRIP_COST_SUMMARY"`)
+### 2.12. Debt cost & structure
 
-So the flat lists for prompts look like this:
+- High-interest debt burden  
+- Payment order suboptimal  
+- Refinance or consolidation opportunity  
+- Refinance opportunity  
+- Consolidation benefit  
+- Autopay discount missing  
+- Prepayment strategy  
+- Balance transfer opportunity  
+- Interest rate negotiation  
+- BNPL overuse pattern  
+- Missed or late payments risk  
+- Student loan forgiveness  
+- Debt payoff timeline inefficiently long  
+- Multiple small balances suitable for snowball  
+- Promotional 0% APR ending soon  
+- Variable-rate debt exposure risk  
 
----
+### 2.13. Credit score & behavior
 
-### 2.1. FI Type values (20 types)
+- High credit utilization  
+- Too many recent inquiries  
+- Negative marks present  
+- Thin credit file  
+- Credit card suboptimal  
+- Card rewards suboptimal  
+- Rewards not redeemed  
+- Cashback category mismatch  
+- Loyalty program missing  
+- Points transfer opportunity  
+- Portal shopping missed  
+- Reward expiration warning  
+- Utilization spike before statement date  
+- Limited mix of credit types  
+- Short credit history length  
+- Authorized user strategy opportunity  
 
-Use these strings in `{ONE OF THE FOLLOWING}` for `FI Type`:
+### 2.14. Insurance & protection
 
-- Overall System Health
-- Cushion & Safety Net
-- Stability & Volatility
-- Subscriptions & Recurring
-- Banking & Fee Leaks
-- Everyday Spending Leaks
-- Cash Yield & Idle Money
-- Income & Bill Timing
-- Buffers & Future Shocks
-- Savings & Cushion Behavior
-- Trips & Life Event Stories
-- Debt Cost & Structure
-- Credit Score & Behavior
-- Insurance & Protection
-- Fraud, Identity & P2P Risk
-- Tax Optimization & Credits
-- Employer & Tax-Advantaged Accounts
-- Investing & Long-Term Growth
-- Income, Skills & Career
-- Habits & Education Progress
+- Insurance gap identified  
+- Insurance overlap detected  
+- Critical coverage missing  
+- Coverage gap risk  
+- Deductible not aligned with risk  
+- Deductible optimization  
+- Premium payment timing  
+- Bundle opportunity  
+- Coverage peer comparison  
+- Underinsured high-value asset  
+- Overinsured low-risk area  
+- Employer coverage underused  
+- Insurance renewal shopping opportunity  
 
-(You can merge a couple if you want fewer FI Types, but this size is still very manageable.)
+### 2.15. Fraud, identity & P2P risk
 
----
+- Identity theft risk pattern  
+- Suspicious P2P transfers  
+- Lack of digital footprint for cash  
+- Credit monitoring recommended  
+- Fraud risk indicator  
+- Fraud risk pattern  
+- Card used with high-risk merchants  
+- Unusual location spending pattern  
+- Small test charge pattern  
 
-### 2.2. FI Subtype values (all subcategories)
+### 2.16. Tax optimization & credits
 
-For the `FI Subtype` prompt you’ll have a longer `{ONE OF THE FOLLOWING}` list.
+- Tax withholding adjustment  
+- Tax deduction missed  
+- Tax credit eligible  
+- Tax credit qualification  
+- Education or student loan tax benefit  
+- Tax timing strategy  
+- Tax bracket optimization  
+- Tax loss harvesting  
+- State tax arbitrage  
+- Charitable deduction bundling  
+- Property tax exemption  
+- Energy rebate available  
+- Retirement contribution tax benefit opportunity  
+- Self-employed tax optimization gap  
+- Filing status optimization opportunity  
+- Dependent-related tax benefit opportunity  
 
-Values are all caps here, but you can keep them as readable phrases if you prefer:
+### 2.17. Employer & tax-advantaged accounts
 
-- TRUV_SCORE_STATUS
-- SCORE_TREND_CHANGE
-- RUNWAY_ESTIMATE
-- HEAVY_MONTH_BUT_SAFE
-- LOW_OR_NO_EMERGENCY_FUND
-- CUSHION_IMPROVING_TREND
-- CUSHION_BEING_QUIETLY_USED
-- CUSHION_PROTECTED_FROM_NEW_DEBT
-- HIGH_MONTH_TO_MONTH_VOLATILITY
-- STABILITY_IMPROVING
-- ONE_OFF_SPIKE_EXPLAINED
-- NEW_BASELINE_SHIFT_DETECTED
-- SUBSCRIPTION_REDUNDANCY
-- SUBSCRIPTION_UNDERUTILIZED
-- SUBSCRIPTION_HIDDEN_OR_FORGOTTEN
-- SUBSCRIPTION_PRICE_INCREASE
-- FREE_TRIAL_ABOUT_TO_START_CHARGING
-- CHECKING_ACCOUNT_FEES
-- ATM_FEE_PATTERN
-- OVERDRAFT_PATTERN_DETECTED
-- FOREIGN_TRANSACTION_FEES
-- WIRE_TRANSFER_EXCESSIVE
-- SMALL_DAILY_PURCHASES_ADD_UP
-- DELIVERY_CREEP_PATTERN
-- CATEGORY_OVERSPEND_VS_SELF_BASELINE
-- IMPULSE_SPENDING_PATTERN
-- IDLE_CASH_DETECTED
-- SAVINGS_RATE_SUBOPTIMAL
-- LOW_YIELD_CHECKING_BALANCE_HIGH
-- MOVE_CASH_TO_HIGH_YIELD_OPPORTUNITY
-- BILL_CYCLE_ALIGNMENT_ISSUE
-- PAYCHECK_AND_BILLS_MISALIGNED
-- LARGE_PAYMENTS_CLUSTERED
-- INCOME_SMOOTHING_OPPORTUNITY
-- TAX_BUFFER_INSUFFICIENT
-- IRREGULAR_EXPENSE_BUFFER_MISSING
-- UPCOMING_KNOWN_BIG_BILL
-- SEASONAL_EXPENSE_PATTERN
-- IRREGULAR_SAVINGS_PATTERN
-- NO_AUTOMATIC_SAVINGS
-- SAVINGS_VS_DEBT_TRADEOFF_OFF
-- SHORT_TERM_GOAL_UNDERFUNDED
-- TRAVEL_TRIP_COST_SUMMARY
-- MOVE_APARTMENT_COST_SUMMARY
-- CAR_REPAIR_COST_IMPACT
-- MEDICAL_BILL_IMPACT
-- GADGET_OR_FURNITURE_UPGRADE_IMPACT
-- HIGH_INTEREST_DEBT_BURDEN
-- PAYMENT_ORDER_SUBOPTIMAL
-- REFINANCE_OR_CONSOLIDATION_OPPORTUNITY
-- MISSED_OR_LATE_PAYMENTS_RISK
-- BNPL_OVERUSE_PATTERN
-- HIGH_CREDIT_UTILIZATION
-- TOO_MANY_RECENT_INQUIRIES
-- NEGATIVE_MARKS_PRESENT
-- THIN_CREDIT_FILE
-- CARD_REWARDS_SUBOPTIMAL
-- INSURANCE_GAP_IDENTIFIED
-- INSURANCE_OVERLAP_DETECTED
-- DEDUCTIBLE_NOT_ALIGNED_WITH_RISK
-- CRITICAL_COVERAGE_MISSING
-- IDENTITY_THEFT_RISK_PATTERN
-- SUSPICIOUS_P2P_TRANSFERS
-- LACK_OF_DIGITAL_FOOTPRINT_FOR_CASH
-- CREDIT_MONITORING_RECOMMENDED
-- TAX_WITHHOLDING_ADJUSTMENT
-- TAX_DEDUCTION_MISSED
-- TAX_CREDIT_ELIGIBLE
-- EDUCATION_OR_STUDENT_LOAN_TAX_BENEFIT
-- RSU_OR_EQUITY_TAX_DRAG
-- 401K_MATCH_NOT_MAXIMIZED
-- HSA_FSA_UNDERUTILIZED
-- COMMUTER_BENEFIT_UNCLAIMED
-- ESPP_NOT_ENROLLED
-- GOV_ASSISTANCE_OR_PROGRAM_ELIGIBLE
-- NOT_INVESTING_WITH_AVAILABLE_SURPLUS
-- INVESTMENT_FEE_HIGH
-- ASSET_ALLOCATION_MISALIGNED
-- TOO_MUCH_CASH_VS_LONG_TERM
-- DCA_OR_AUTOMATION_OPPORTUNITY
-- SIDE_INCOME_OPPORTUNITY
-- RAISE_NEGOTIATION_TIMING
-- FREELANCE_TAX_OPTIMIZATION
-- EMPLOYER_EDUCATION_BENEFITS_UNUSED
-- EDUCATION_GAP_ON_CORE_TOPICS
-- LOW_ENGAGEMENT_WITH_LEARNING_CONTENT
-- IMPROVEMENT_TREND_BUT_NOT_STABLE
-- STRONG_DISCIPLINE_AND_STREAKS
+- 401k match not maximized  
+- HSA/FSA underutilized  
+- Commuter benefit unclaimed  
+- ESPP not enrolled  
+- Wellness reimbursement missed  
+- Education benefit unused  
+- Employer education benefits unused  
+- RSU or equity tax drag  
+- RSU tax inefficient  
+- Dependent care FSA opportunity  
+- Benefit eligibility unclaimed  
+- Government assistance or program eligible  
+- Assistance program match  
+- Benefit utilization gap  
+- Employer stock concentration risk  
+- Suboptimal RSU sell timing  
+- Forgotten benefits from previous employer  
+- Unconsolidated legacy retirement accounts  
+
+### 2.18. Investing & long-term growth
+
+- Not investing with available surplus  
+- Investment fee high  
+- Asset allocation misaligned  
+- Investment allocation variance  
+- Rebalancing needed  
+- Dividend reinvestment  
+- DCA or automation opportunity  
+- DCA opportunity  
+- CD ladder opportunity  
+- Concentration risk  
+- Liquidity risk  
+- Market timing risk  
+- Market update relevant  
+- Regulatory change impact  
+- Regulatory compliance risk  
+- Tax-inefficient asset location  
+- Excess cash inside long-term accounts  
+- Sector or theme concentration risk  
+- Underuse of tax-advantaged retirement space  
+
+### 2.19. Income, skills & career
+
+- Side income opportunity  
+- Raise negotiation timing  
+- Freelance tax optimization  
+- Passive income potential  
+- Referral bonus unclaimed  
+- Cashback app missing  
+- Underpriced freelance or contract work  
+- Underused monetizable skills  
+- Income source concentration risk  
+- Employer or industry instability signal  
+
+### 2.20. Habits & education progress
+
+- Education gap on core topics  
+- Educational opportunity  
+- Low engagement with learning content  
+- Improvement trend but not stable  
+- Strong discipline and streaks  
+- Behavioral suggestion  
+- Financial milestone  
+- Manual payment inefficiency  
+- Alert configuration needed  
+- Recurring task automation  
+- Bill pay optimization  
+- Custom pattern detected  
+- Other unclassified  
+- Irregular money review routine  
+- Money avoidance pattern  
+- Overreacting to short-term news  
+- Near-habit formation opportunity  
 
 ---
 
-## 3. Recommended Action Types (for the Action prompt)
+## 3. Recommended Action Type (extended)
 
-These are the single‑choice “what to do” labels you can use across all intents:
+Use as `{ONE OF THE FOLLOWING}` for Action prompt:
 
-- Rebalance Monthly Budget
-- Reduce Discretionary Spending
-- Cut or Cancel Subscriptions
-- Optimize Subscription Plan or Tier
-- Move Cash to High-Yield Savings
-- Build or Increase Emergency Fund
-- Pay Down High-Interest Debt First
-- Refinance or Consolidate Debt Strategically
-- Optimize Credit Card Usage and Rewards
-- Lower Credit Utilization and Avoid New Debt
-- Enroll in or Increase Employer Retirement Contributions
-- Open or Fund HSA / FSA or Other Tax-Advantaged Account
-- Adjust Tax Withholding or Filing Strategy
-- Switch to Lower-Fee / Higher-Interest Bank Account
-- Reduce Bank / ATM / Foreign Transaction Fees
-- Review and Adjust Insurance Coverage
-- Set Up Automation (Autopay, Autosave, Alerts)
-- Increase Income (Raise, Side Gig, Monetize Skills)
-- Protect Identity and Credit (Monitoring / Freeze / Alerts)
-- Create or Update a Financial Plan for a Specific Goal
-
----
-
-## 4. myTruv — SEO & Content Strategy (No‑Hustle AI Autopilot + One Score)
-
-### 4.1. Purpose
-
-This file defines how myTruv shows up in **search** and **content**:
-
-- what topics we want to own,
-- what keywords we aim for,
-- how content supports the brand story:
-  - AI money companion,
-  - no‑hustle,
-  - one calm score,
-  - works with messy/irregular income,
-  - emotionally safe and shame‑free.
-
-Use this for:
-
-- planning blog posts & content hubs,
-- writing landing pages & `/vs` pages,
-- briefing writers / agencies.
+1. Rebalance monthly budget  
+2. Reduce discretionary spending  
+3. Cut or cancel subscriptions  
+4. Optimize subscription plan or tier  
+5. Move cash to high-yield savings  
+6. Build or increase emergency fund  
+7. Pay down high-interest debt first  
+8. Refinance or consolidate debt strategically  
+9. Optimize credit card usage and rewards  
+10. Lower credit utilization and avoid new debt  
+11. Enroll in or increase employer retirement contributions  
+12. Open or fund HSA / FSA or other tax-advantaged account  
+13. Adjust tax withholding or filing strategy  
+14. Switch to lower-fee / higher-interest bank account  
+15. Reduce bank / ATM / foreign transaction fees  
+16. Review and adjust insurance coverage  
+17. Set up automation (autopay, autosave, alerts)  
+18. Increase income (raise, side gig, monetize skills)  
+19. Protect identity and credit (monitoring / freeze / alerts)  
+20. Create or update a financial plan for a specific goal  
+21. Compare and optimize housing costs  
+22. Plan and fund an upcoming big life event  
+23. Consolidate accounts and simplify structure  
+24. Diversify investments and reduce concentration  
+25. Consolidate or roll over legacy retirement accounts  
+26. Use available employer and government benefits  
+27. Build sinking funds for irregular expenses  
+28. Optimize tax-advantaged asset location  
+29. Shop and negotiate recurring bills and services  
+30. Establish a regular money check-in routine  
 
 ---
 
-### 4.2. Global SEO Principles
+## 4. Income Level / Risk Level
 
-1. **Start from real emotional problems**
-   - “Budgeting apps exhaust me.”
-   - “I have irregular income.”
-   - “I feel anxious about money.”
-   - “I don’t know what my trip/move actually cost.”
+**Income level**
+- Low income  
+- Mid income  
+- High income  
+- <$30k  
+- $30k–$60k  
+- $60k–$100k  
+- $100k+  
+
+**Risk level**
+- Low risk  
+- Medium risk  
+- High risk  
+- Critical  
+
+---
+
+Mapping reminder: map 1300+ patterns → `FI Type / FI Subtype / Income / Risk / Action`.  
+If needed, can produce example JSON structures for DB schemas.
 
 2. **Tie every topic back to our promise**
    - no‑hustle,
