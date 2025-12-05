@@ -177,7 +177,10 @@ function normalizeHeading(text) {
     .trim();
   const finalText = stripped || "Section";
   const emojiPart = emojiMatch.join(" ");
-  return emojiPart ? `${finalText} ${emojiPart}` : `${finalText} 🔹`;
+  if (emojiPart) return `${finalText} ${emojiPart}`;
+  // If top-level doc has a known emoji, append it to subsections lacking one
+  const topDocEmoji = docEmojis[activeDoc.id] || "🔹";
+  return `${finalText} ${topDocEmoji}`;
 }
 
 function stripEmojis(text) {
