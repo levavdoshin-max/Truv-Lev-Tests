@@ -84,6 +84,7 @@ const docTitle = document.getElementById("doc-title");
 const docDesc = document.getElementById("doc-desc");
 const heroButtons = document.querySelectorAll("[data-doc]");
 const sectionMenu = document.getElementById("section-menu");
+const flowDiagram = document.getElementById("flow-diagram");
 const aiKeyInput = document.getElementById("ai-key");
 const aiQuestionInput = document.getElementById("ai-question");
 const aiSubmitButton = document.getElementById("ai-submit");
@@ -186,6 +187,12 @@ function setHeader(doc) {
   const emoji = docEmojis[doc.id];
   docTitle.textContent = emoji ? `${emoji} ${baseTitle}` : baseTitle;
   docDesc.textContent = doc.description;
+}
+
+function setFlowVisibility(docId) {
+  if (!flowDiagram) return;
+  const show = docId === "seo";
+  flowDiagram.classList.toggle("hidden", !show);
 }
 
 function setLoading(message) {
@@ -319,6 +326,7 @@ async function loadDoc(docId, opts = {}) {
   activeDoc = doc;
   activeTopId = null;
   setHeader(doc);
+  setFlowVisibility(doc.id);
   renderDocList();
 
   setLoading("Loading the latest Markdown…");

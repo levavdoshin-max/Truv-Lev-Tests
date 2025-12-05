@@ -431,6 +431,10 @@ button {
   color: #0f172a;
 }
 
+.flow-diagram.hidden {
+  display: none;
+}
+
 .flow-diagram {
   margin-top: 12px;
 }
