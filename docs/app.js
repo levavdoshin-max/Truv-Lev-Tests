@@ -52,6 +52,15 @@ const docsMap = docs.reduce((acc, doc) => {
   return acc;
 }, {});
 
+const docEmojis = {
+  brand: "✨",
+  positioning: "🧭",
+  messaging: "✍️",
+  personas: "🧑‍🤝‍🧑",
+  seo: "🔍",
+  overview: "📑",
+};
+
 const categories = [
   {
     id: "brand-story",
@@ -89,8 +98,9 @@ function renderDocList() {
     const button = document.createElement("button");
     button.className = `doc-card${doc.id === activeDoc.id ? " active" : ""}`;
     button.dataset.docId = doc.id;
+    const emoji = docEmojis[doc.id] || "🔹";
     button.innerHTML = `
-      <p class="title">${doc.title}</p>
+      <p class="title">${emoji} ${doc.title}</p>
       <p class="desc">${doc.description}</p>
       <span class="badge">${doc.badge}</span>
     `;
@@ -134,7 +144,8 @@ function renderDocList() {
 }
 
 function setHeader(doc) {
-  docTitle.textContent = doc.title;
+  const emoji = docEmojis[doc.id] || "🔹";
+  docTitle.textContent = `${emoji} ${doc.title}`;
   docDesc.textContent = doc.description;
 }
 
