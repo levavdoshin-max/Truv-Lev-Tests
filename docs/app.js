@@ -342,32 +342,6 @@ async function loadDoc(docId, opts = {}) {
   }
 }
 
-function setAiStatus(message, type = "") {
-  if (!aiStatus) return;
-  aiStatus.textContent = message;
-  aiStatus.classList.remove("error", "success");
-  if (type) aiStatus.classList.add(type);
-}
-
-function loadStoredApiKey() {
-  if (!aiKeyInput) return "";
-  try {
-    const stored = localStorage.getItem("truv_ai_api_key");
-    if (stored) aiKeyInput.value = stored;
-    return stored || "";
-  } catch {
-    return "";
-  }
-}
-
-function saveApiKey(key) {
-  try {
-    localStorage.setItem("truv_ai_api_key", key);
-  } catch {
-    // ignore storage issues
-  }
-}
-
 async function askAi() {
   if (!aiQuestionInput || !aiSubmitButton) return;
   const key = (aiKeyInput?.value || "").trim();
