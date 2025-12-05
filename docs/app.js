@@ -83,10 +83,23 @@ const docDesc = document.getElementById("doc-desc");
 const refreshButton = document.getElementById("refresh-doc");
 const heroButtons = document.querySelectorAll("[data-doc]");
 const sectionMenu = document.getElementById("section-menu");
+const aiKeyInput = document.getElementById("ai-key");
+const aiQuestionInput = document.getElementById("ai-question");
+const aiSubmitButton = document.getElementById("ai-submit");
+const aiStatus = document.getElementById("ai-status");
+const aiAnswer = document.getElementById("ai-answer");
 
 let activeDoc = docs[0];
 let activeTopId;
 let headingObserver;
+
+const aiConfig = {
+  endpoint: "https://api.openai.com/v1/chat/completions",
+  model: "gpt-4o-mini",
+  system:
+    "You are an assistant for myTruv brand documentation. Answer concisely and focus on brand, messaging, personas, SEO, and product positioning based only on provided context. If unsure, say you are unsure.",
+  maxTokens: 600,
+};
 
 function renderDocList() {
   docList.innerHTML = "";
@@ -304,6 +317,97 @@ async function loadDoc(docId, opts = {}) {
   }
 }
 
+function setAiStatus(message, type = "") {
+  if (!aiStatus) return;
+  aiStatus.textContent = message;
+  aiStatus.classList.remove("error", "success");
+  if (type) aiStatus.classList.add(type);
+}
+
+function loadStoredApiKey() {
+  if (!aiKeyInput) return "";
+  try {
+    const stored = localStorage.getItem("truv_ai_api_key");
+    if (stored) aiKeyInput.value = stored;
+    return stored || "";
+  } catch {
+    return "";
+  }
+}
+
+function saveApiKey(key) {
+  try {
+    localStorage.setItem("truv_ai_api_key", key);
+  } catch {
+    // ignore storage issues
+  }
+}
+
+async function askAi() {
+  if (!aiQuestionInput || !aiSubmitButton) return;
+  const key = (aiKeyInput?.value || "").trim();
+  const question = aiQuestionInput.value.trim();
+
+  if (!key) {
+    setAiStatus("Add your OpenAI API key to ask questions.", "error");
+    aiKeyInput?.focus();
+    return;
+  }
+
+  if (!question) {
+    setAiStatus("Type a question to ask the model.", "error");
+    aiQuestionInput.focus();
+    return;
+  }
+
+  const context = (docRoot?.textContent || "").trim().slice(0, 8000);
+
+  aiSubmitButton.disabled = true;
+  aiSubmitButton.textContent = "Asking…";
+  setAiStatus("Thinking…");
+
+  try {
+    const response = await fetch(aiConfig.endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${key}`,
+      },
+      body: JSON.stringify({
+        model: aiConfig.model,
+        messages: [
+          { role: "system", content: aiConfig.system },
+          {
+            role: "user",
+            content: `${question}\n\nContext (from current doc):\n${context || "No context loaded."}`,
+          },
+        ],
+        max_tokens: aiConfig.maxTokens,
+        temperature: 0.2,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`API error ${response.status}`);
+    }
+
+    const data = await response.json();
+    const text = data?.choices?.[0]?.message?.content?.trim();
+    if (text) {
+      aiAnswer.innerHTML = marked.parse(text);
+      setAiStatus("Done.", "success");
+    } else {
+      aiAnswer.textContent = "";
+      setAiStatus("No answer returned.", "error");
+    }
+  } catch (error) {
+    setAiStatus(error.message || "Request failed.", "error");
+  } finally {
+    aiSubmitButton.disabled = false;
+    aiSubmitButton.textContent = "Ask";
+  }
+}
+
 refreshButton.addEventListener("click", () => {
   loadDoc(activeDoc.id, { cacheBust: true });
 });
@@ -318,6 +422,23 @@ heroButtons.forEach((button) => {
     }
   });
 });
+
+if (aiKeyInput) {
+  loadStoredApiKey();
+  aiKeyInput.addEventListener("blur", () => saveApiKey(aiKeyInput.value.trim()));
+}
+
+if (aiSubmitButton) {
+  aiSubmitButton.addEventListener("click", askAi);
+}
+
+if (aiQuestionInput) {
+  aiQuestionInput.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+      askAi();
+    }
+  });
+}
 
 renderDocList();
 loadDoc(activeDoc.id);

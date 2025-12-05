@@ -55,6 +55,27 @@
             <button class="chip muted" id="refresh-doc">Refresh</button>
           </div>
         </div>
+        <div class="panel ai-box">
+          <div class="ai-header">
+            <div>
+              <p class="eyebrow">AI helper</p>
+              <h3>Ask about the brand</h3>
+              <p class="note">Add your OpenAI API key (kept in this browser) and ask anything about these docs.</p>
+            </div>
+            <div class="ai-key">
+              <label for="ai-key" class="note">API key</label>
+              <input id="ai-key" type="password" placeholder="sk-..." autocomplete="off" />
+              <p class="note tiny">Stored locally; not sent anywhere else.</p>
+            </div>
+          </div>
+          <label class="sr-only" for="ai-question">Your question</label>
+          <div class="ai-input-row">
+            <textarea id="ai-question" rows="3" placeholder="Ask about the brand, messaging, SEO, personas…"></textarea>
+            <button class="primary" id="ai-submit" type="button">Ask</button>
+          </div>
+          <p class="ai-status note" id="ai-status"></p>
+          <div class="ai-answer" id="ai-answer"></div>
+        </div>
         <div id="section-menu" class="section-menu"></div>
         <article id="doc-root" class="doc-body">
           <div class="loading">
