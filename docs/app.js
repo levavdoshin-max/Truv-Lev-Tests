@@ -85,9 +85,8 @@ const heroButtons = document.querySelectorAll("[data-doc]");
 const sectionMenu = document.getElementById("section-menu");
 
 let activeDoc = docs[0];
-let headingObserver;
-let headingObserverH2;
 let activeTopId;
+let headingObserver;
 
 function renderDocList() {
   docList.innerHTML = "";
@@ -190,7 +189,7 @@ function stripEmojis(text) {
 function buildSectionMenu() {
   if (!sectionMenu) return;
 
-  const headings = Array.from(docRoot.querySelectorAll("h2, h3"));
+  const headings = Array.from(docRoot.querySelectorAll("h2"));
 
   if (!headings.length) {
     sectionMenu.innerHTML = "";
@@ -213,36 +212,11 @@ function buildSectionMenu() {
     return {
       id,
       text: normalizedText,
-      level: el.tagName.toLowerCase(),
       node: el,
     };
   });
 
-  const groups = [];
-  let currentGroup = null;
-
-  items.forEach((item) => {
-    if (item.level === "h2") {
-      currentGroup = { ...item, children: [] };
-      groups.push(currentGroup);
-    } else if (item.level === "h3" && currentGroup) {
-      currentGroup.children.push(item);
-    } else if (item.level === "h3" && !currentGroup) {
-      // If doc starts with h3, create a placeholder group
-      const placeholder = {
-        id: "section",
-        text: "Sections",
-        level: "h2",
-        children: [item],
-      };
-      groups.push(placeholder);
-      currentGroup = placeholder;
-    }
-  });
-
-  activeTopId = activeTopId || (groups[0] ? groups[0].id : null);
-
-  const hasSubsections = groups.some((g) => g.children && g.children.length);
+  activeTopId = activeTopId || (items[0] ? items[0].id : null);
 
   sectionMenu.innerHTML = `
     <div class="section-menu-header">
@@ -250,7 +224,7 @@ function buildSectionMenu() {
       <h3>Jump within this doc</h3>
     </div>
     <div class="items level2">
-      ${groups
+      ${items
         .map(
           (item) => `
             <button class="item level-2" data-target="${item.id}">
@@ -260,43 +234,9 @@ function buildSectionMenu() {
         )
         .join("")}
     </div>
-    ${hasSubsections ? '<div class="items level3 hidden" id="section-submenu"></div>' : ""}
   `;
 
   const buttonsLevel2 = Array.from(sectionMenu.querySelectorAll(".items.level2 .item"));
-
-  function renderSubmenu(parentId) {
-    const subContainer = sectionMenu.querySelector("#section-submenu");
-    if (!subContainer) return;
-    const parent = groups.find((g) => g.id === parentId);
-    if (!subContainer || !parent) return;
-
-    if (parent.children.length === 0) {
-      subContainer.classList.add("hidden");
-      subContainer.innerHTML = "";
-      return;
-    }
-
-    subContainer.classList.remove("hidden");
-    subContainer.innerHTML = parent.children
-      .map(
-        (child) => `
-        <button class="item level-3" data-target="${child.id}">
-          ${child.text}
-        </button>
-      `
-      )
-      .join("");
-
-    const buttonsLevel3 = Array.from(subContainer.querySelectorAll(".item.level-3"));
-    buttonsLevel3.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const targetId = btn.getAttribute("data-target");
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  }
 
   buttonsLevel2.forEach((button) => {
     button.addEventListener("click", () => {
@@ -304,42 +244,23 @@ function buildSectionMenu() {
       const targetEl = document.getElementById(targetId);
       activeTopId = targetId;
       buttonsLevel2.forEach((b) => b.classList.toggle("active", b === button));
-      renderSubmenu(targetId);
       if (targetEl) targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
   if (buttonsLevel2.length) {
     buttonsLevel2.forEach((btn) => btn.classList.toggle("active", btn.getAttribute("data-target") === activeTopId));
-    renderSubmenu(activeTopId);
   }
 
   if (headingObserver) headingObserver.disconnect();
-  if (headingObserverH2) headingObserverH2.disconnect();
-
-  headingObserverH2 = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          activeTopId = id;
-          buttonsLevel2.forEach((btn) => btn.classList.toggle("active", btn.getAttribute("data-target") === id));
-          renderSubmenu(id);
-        }
-      });
-    },
-    { rootMargin: "0px 0px -60% 0px", threshold: 0.1 }
-  );
 
   headingObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
-          const subButtons = Array.from(sectionMenu.querySelectorAll(".items.level3 .item"));
-          subButtons.forEach((btn) => {
-            btn.classList.toggle("active", btn.getAttribute("data-target") === id);
-          });
+          activeTopId = id;
+          buttonsLevel2.forEach((btn) => btn.classList.toggle("active", btn.getAttribute("data-target") === id));
         }
       });
     },
@@ -347,8 +268,7 @@ function buildSectionMenu() {
   );
 
   items.forEach((item) => {
-    if (item.level === "h2") headingObserverH2.observe(item.node);
-    if (item.level === "h3") headingObserver.observe(item.node);
+    headingObserver.observe(item.node);
   });
 }
 
@@ -357,6 +277,7 @@ async function loadDoc(docId, opts = {}) {
   if (!doc) return;
 
   activeDoc = doc;
+  activeTopId = null;
   setHeader(doc);
   renderDocList();
 
